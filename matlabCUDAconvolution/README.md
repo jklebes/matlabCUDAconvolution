@@ -1,5 +1,9 @@
 C++/CUDA GPU-accelerated convolution in 2D and 3D.
 
+Based on NVIDIA cuda-samples convolutionFFT2D combined with matlab mexGPUexample.m.
+- https://github.com/NVIDIA/cuda-samples/tree/master/Samples/5_Domain_Specific/convolutionFFT2D
+- https://uk.mathworks.com/help/parallel-computing/run-mex-functions-containing-cuda-code.html 
+
 NVIDIA CUDA toolbox - including an nvcc compiler, supported C++ compiler, and library cuFFT - must be installed.
 
 Run functions ``CUDAconvolution(data, kernel)`` or ``CUDAconvolution3D(data, kernel)`` analogous to matlab ``conv2``, ``convn``.
