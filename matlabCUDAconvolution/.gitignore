@@ -1,0 +1,5 @@
+*.asv
+*.fig
+*.mexw64
+*.mex*
+.vs/
