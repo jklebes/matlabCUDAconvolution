@@ -2,7 +2,7 @@ C++/CUDA GPU-accelerated convolution in 2D and 3D.
 
 NVIDIA CUDA toolbox - including an nvcc compiler, supported C++ compiler, and library cuFFT - must be installed.
 
-Run functions ``CUDAconvolution(data, kernel)`` or ``CUDAconvolution3D(data, kernel)`` analogous to matlab ``conv2``, ``conv3``.
+Run functions ``CUDAconvolution(data, kernel)`` or ``CUDAconvolution3D(data, kernel)`` analogous to matlab ``conv2``, ``convn``.
 
 The method is convolution by FFT, pointwise multiply, and inverse FFT.
 
