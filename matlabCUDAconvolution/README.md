@@ -4,6 +4,8 @@ Based on NVIDIA cuda-samples convolutionFFT2D combined with matlab mexGPUexample
 - https://github.com/NVIDIA/cuda-samples/tree/master/Samples/5_Domain_Specific/convolutionFFT2D
 - https://uk.mathworks.com/help/parallel-computing/run-mex-functions-containing-cuda-code.html 
 
+I provide compiled .mexw64 files for Windows.  If this doesn't work for you due to different machine, a new mex compilation 
+will be attempted and the
 NVIDIA CUDA toolbox - including an nvcc compiler, supported C++ compiler, and library cuFFT - must be installed.
 
 Run functions ``CUDAconvolution(data, kernel)`` or ``CUDAconvolution3D(data, kernel)`` analogous to matlab ``conv2``, ``convn``.
