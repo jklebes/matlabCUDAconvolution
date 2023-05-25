@@ -1,6 +1,5 @@
 *.asv
 *.fig
-*.mexw64
-*.mex*
+DIF.mlx
 .vs/
 *C2C*
