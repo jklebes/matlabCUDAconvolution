@@ -32,9 +32,10 @@ if memoryNeeded >= GPUmemory
        sizeOfKernel, sizeOfData, memoryNeeded, GPUinfo.Name, GPUmemory)
 end
 ext = mexext;
-if ~(isfile(['mexGPUconvolution3D.' ext]))
+if ~(exist(['mexGPUconvolution3D.' ext],"file")==3)
     disp("Compiling...");
-    mexcuda -v -lcufft mexGPUconvolution3D.cu;
+    cufile = which('mexGPUconvolution3D.cu');
+    eval(['mexcuda -v -lcufft ' cufile]);
 end
 dataGPU=gpuArray(cast(data, 'single'));
 kernelGPU=gpuArray(cast(kernel, 'single'));
