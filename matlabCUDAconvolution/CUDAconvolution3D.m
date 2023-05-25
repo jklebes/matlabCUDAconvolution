@@ -11,9 +11,28 @@ function dataOut = CUDAconvolution3D(data, kernel)
 % dataOut - convolution of data and kernel, matlab 3D single array on host
 %
 % C++/CUDA code is adapted from NVIDIA cuda-samples/convolutionFFT2D
+
+%check inputs
 assert(ndims(data)==3 && ndims(kernel)==3 && isnumeric(data) && isnumeric(kernel))
-if ~(isfile('mexGPUconvolution3D.mexw64') || isfile ('mexGPUconvolution3D.mexmaci64') ||...
-    isfile('mexGPUconvolution3D.mexa64'))
+%check memory
+GPUinfo = gpuDevice(1);
+GPUmemory= GPUinfo.AvailableMemory;
+sizeOfSingle =4;
+sizeOfComplexSingle=8;
+sizeOfData = numel(data);
+sizeOfPaddedData = prod(2.^ceil(log2(size(data)+size(kernel))));
+sizeOfKernel = numel(kernel);
+memoryNeeded =( (2*sizeOfData + sizeOfKernel + 2*sizeOfPaddedData) * sizeOfSingle + ...
+    2*sizeOfPaddedData*sizeOfComplexSingle );
+if memoryNeeded >= GPUmemory
+   error(['Inputs too large for GPU memory. \n' ...
+       'Kernel size was %s elements, data size was %s elements.\n' ...
+       'GPU memory to process would be %s bytes,' ...
+       ' while GPU "%s" has %s bytes available.'], ...
+       sizeOfKernel, sizeOfData, memoryNeeded, GPUinfo.Name, GPUmemory)
+end
+ext = mexext;
+if ~(isfile(['mexGPUconvolution3D.' ext]))
     disp("Compiling...");
     mexcuda -v -lcufft mexGPUconvolution3D.cu;
 end
