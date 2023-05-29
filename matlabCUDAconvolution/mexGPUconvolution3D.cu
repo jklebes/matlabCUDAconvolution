@@ -435,9 +435,9 @@ void mexFunction(int nlhs, mxArray *plhs[],
     mwSize const kernelW = dimsKernel[0]; 
     mwSize const kernelH = dimsKernel[1];
     mwSize const kernelD = dimsKernel[2];
-    mwSize const kernelX = 5; 
-    mwSize const kernelY = 5;
-    mwSize const kernelZ = 5;
+    mwSize const kernelX = kernelW/2; 
+    mwSize const kernelY = kernelH/2;
+    mwSize const kernelZ = kernelD/2;
     unsigned int const fftW = snapTransformSize(dataW + kernelW - 1);
     unsigned int const fftH = snapTransformSize(dataH + kernelH - 1);
     unsigned int const fftD = snapTransformSize(dataD + kernelD - 1);
