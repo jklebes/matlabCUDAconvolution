@@ -387,8 +387,8 @@ void mexFunction(int nlhs, mxArray *plhs[],
     mwSize const * const dimsKernel = mxGPUGetDimensions(kernel);
     mwSize const kernelW = dimsKernel[0]; 
     mwSize const kernelH = dimsKernel[1];
-    mwSize const kernelX = 5; 
-    mwSize const kernelY = 5;
+    mwSize const kernelX = kernelW/2; 
+    mwSize const kernelY = kernelH/2;
     unsigned int const fftW = snapTransformSize(dataW + kernelW - 1);
     unsigned int const fftH = snapTransformSize(dataH + kernelH - 1);
     mwSize const dimsFft[2] = {fftW, fftH};
