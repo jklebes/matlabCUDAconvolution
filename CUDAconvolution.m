@@ -1,7 +1,9 @@
 function dataOut = CUDAconvolution(data, kernel)
 %CUDAconvolution(data, kernel) GPU-accelerated 2D convolution
-% the first time, compiles mex file from mexGPUconvolution.cu, 
-% convolutionFFT2D_common.h 
+% OS-specific mex file should be on path.
+% Otherwise ,
+% the code compiles mex file from mexGPUconvolution.cu, 
+% convolutionFFT2D_common.h.  Then
 %   - .cu and .h files must be on path
 %   - NVIDIA nvcc compiler must be installed
 %   - NVDIA cuFFT library must be installed
